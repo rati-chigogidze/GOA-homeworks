@@ -29,51 +29,51 @@ day = input("please enter random number 1/7:")
 print(day)
 
 if day == 1:
-    print("")
+    print("monday")
 
 else:
-    print("monday")
+    print("")
 
 
 if day == 2:
-    print("")
+    print("tuesday")
 
 else:
-    print("tuesday")
+    print("")
 
 
 if day == 3:
-    print("")
+    print("wednesday")
 
 else:
-    print("wednesday")
+    print("")
 
 
 if day == 4:
-    print("")
+    print("thursday")
 
 else:
-    print("thursday")
+    print("")
 
 
 if day == 5:
-    print("")
+    print("friday")
 
 else:
-    print("friday")
+    print("")
 
 
 if day == 6:
-    print("")
+    print("saturday")
 
 else:
-    print("saturday")
+    print("")
 
 
 if day == 7:
-    print("")
+    print("sunday")
 
 else:
-    print("sunday")
+    print("")
 
     
