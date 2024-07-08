@@ -20,4 +20,4 @@ favourites = [fav_movies, fav_musics]
 
 
 print(fav_movies[len(fav_movies) -1])
-
+print(fav_musics[len(fav_musics) -1])
