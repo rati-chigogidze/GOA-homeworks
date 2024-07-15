@@ -47,3 +47,14 @@ my_function(cars)
 
 
 
+def my_function(i):
+  return 5 * i
+
+print(my_function(7))
+print(my_function(3))
+print(my_function(12))
+
+
+
+
+
