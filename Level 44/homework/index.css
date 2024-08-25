@@ -1,0 +1,24 @@
+body {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+
+.parent {
+
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.child {
+
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+}
