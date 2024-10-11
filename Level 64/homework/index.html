@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { margin: 20px; }
+    </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+<form id="registrationForm">
+    <label for="name">სახელი:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">ემაილი:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="password">პაროლი:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="gender">სქესი:</label><br>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">კაცი</label><br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">ქალი</label><br>
+    <input type="radio" id="other" name="gender" value="other">
+    <label for="other">სხვა</label><br><br>
+
+    <input type="submit" value="რეგისტრაცია">
+</form>
+
+<script>
+    
+    const dateBase = [];
+
+    
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+
+        
+        if (password.length < 8) {
+            alert("Password is too short");
+        } else {
+            
+            const user = {
+                name: name,
+                email: email,
+                password: password,
+                gender: gender
+            };
+
+            
+            dateBase.push(user);
+
+            
+            console.log(dateBase);
+            
+            
+            document.getElementById("registrationForm").reset();
+        }
+    });
+</script>
+
+</body>
+</html>

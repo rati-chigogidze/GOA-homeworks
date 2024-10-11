@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #000000;
+    width: 100%;
+    max-width: 400px;
+    
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    
+
+}
+
+
+
+.nav-list li a {
+    display: flex;
+    color: #fff;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    
+}
+
+.nav-list li a:hover {
+    background-color: #000000;
+}
+
+.nav-list :nth-child(1) {
+    display: flex;
+    fle
+}
