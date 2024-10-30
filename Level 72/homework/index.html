@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="timer">0</h1>
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="reset">Reset</button>
+    
+    <p id="paragraph">ტექსტი 1</p>
+
+    <script>
+        // 1. Show message after 3 seconds
+        setTimeout(() => {
+            console.log("ეს მესიჯი გამოვიდა სამი წამის შემდეგ!");
+        }, 3000);
+
+        // 2. Current time every second
+        setInterval(() => {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            console.log(timeString);
+        }, 1000);
+
+        // 3. Change background color every 3 seconds
+        const colors = ["red", "green", "blue", "yellow", "purple"];
+        let currentIndex = 0;
+
+        setInterval(() => {
+            document.body.style.backgroundColor = colors[currentIndex];
+            currentIndex = (currentIndex + 1) % colors.length;
+        }, 3000);
+
+        // 4. Change paragraph text every 5 seconds
+        const paragraph = document.getElementById("paragraph");
+        const texts = ["ტექსტი 1", "ტექსტი 2", "ტექსტი 3"];
+        let textIndex = 0;
+
+        setInterval(() => {
+            paragraph.textContent = texts[textIndex];
+            textIndex = (textIndex + 1) % texts.length;
+        }, 5000);
+
+        // 5. Timer with Start, Pause, Reset buttons
+        let timer;
+        let count = 0;
+        let isRunning = false;
+
+        const timerDisplay = document.getElementById("timer");
+
+        document.getElementById("start").addEventListener("click", () => {
+            if (!isRunning) {
+                isRunning = true;
+                timer = setInterval(() => {
+                    count++;
+                    timerDisplay.textContent = count;
+                }, 1000);
+            }
+        });
+
+        document.getElementById("pause").addEventListener("click", () => {
+            clearInterval(timer);
+            isRunning = false;
+        });
+
+        document.getElementById("reset").addEventListener("click", () => {
+            clearInterval(timer);
+            isRunning = false;
+            count = 0;
+            timerDisplay.textContent = count;
+        });
+    </script>
+</body>
+</html>
