@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS ანიმაციები</title>
+    <style>
+       
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            overflow-x: hidden;
+        }
+
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                padding: 15px 0;
+            }
+        }
+
+        
+        .cube {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6347;
+            animation: moveCube 10s linear infinite;
+        }
+
+        @keyframes moveCube {
+            0% {
+                top: 0;
+                left: 0;
+            }
+            25% {
+                top: 0;
+                left: 100%;
+            }
+            50% {
+                top: 100%;
+                left: 100%;
+            }
+            75% {
+                top: 100%;
+                left: 0;
+            }
+            100% {
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            letter-spacing: 0px;
+        }
+
+        
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        .btn:active {
+            background-color: #003d7a;
+            letter-spacing: 2px;
+        }
+
+        
+        .content {
+            padding: 50px;
+            text-align: center;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    
+    <div class="cube"></div>
+
+   
+    <div class="content">
+        <h1>მოგესალმებით ჩვენს გვერდზე</h1>
+        <p>ეს არის ძალიან მარტივი ვებგვერდი CSS-ით. განიხილეთ ჩვენი ღილაკების ანიმაციები!</p>
+        <button class="btn">დაჭირე მე</button>
+    </div>
+
+</body>
+</html>
