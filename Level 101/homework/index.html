@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>მომხმარებლის მონაცემები</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input, textarea, button {
+            padding: 10px;
+            margin-top: 5px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #userList {
+            margin-top: 40px;
+        }
+
+        .user-card {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .user-card h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .user-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>მომხმარებლის მონაცემები</h1>
+        
+        <form id="userForm">
+            <label for="firstName">სახელი:</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName">გვარი:</label>
+            <input type="text" id="lastName" required>
+
+            <label for="age">ასაკი:</label>
+            <input type="number" id="age" required>
+
+            <label for="height">სიმაღლე (სმ):</label>
+            <input type="number" id="height" required>
+
+            <label for="description">აღწერა:</label>
+            <textarea id="description" required></textarea>
+
+            <button type="submit">მონაცემების დამატება</button>
+        </form>
+
+        <div id="userList">
+            <h2>მომხმარებლების სია</h2>
+            <div id="users"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const age = parseInt(document.getElementById("age").value.trim());
+            const height = parseInt(document.getElementById("height").value.trim());
+            const description = document.getElementById("description").value.trim();
+
+            if (!firstName || !lastName || !age || !height || !description) {
+                alert("გთხოვთ შეავსოთ ყველა ველი");
+                return;
+            }
+
+            const email = generateEmail(firstName, lastName, age);
+
+            const user = {
+                firstName,
+                lastName,
+                age,
+                height,
+                description,
+                email
+            };
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push(user);
+            localStorage.setItem("users", JSON.stringify(users));
+
+            displayUsers();
+            document.getElementById("userForm").reset();
+        });
+
+        function generateEmail(firstName, lastName, age) {
+            const randomNum = Math.floor(Math.random() * 1000);
+            return `${firstName.toLowerCase()}.${lastName.toLowerCase()}${age}@example.com.${randomNum}`;
+        }
+
+        function displayUsers() {
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const userContainer = document.getElementById("users");
+            userContainer.innerHTML = "";
+
+            users.forEach(user => {
+                const userCard = document.createElement("div");
+                userCard.classList.add("user-card");
+
+                userCard.innerHTML = `
+                    <h3>${user.firstName} ${user.lastName}</h3>
+                    <p><strong>ასაკი:</strong> ${user.age}</p>
+                    <p><strong>სიმაღლე:</strong> ${user.height} სმ</p>
+                    <p><strong>აღწერა:</strong> ${user.description}</p>
+                    <p><strong>ელ. ფოსტა:</strong> ${user.email}</p>
+                `;
+
+                userContainer.appendChild(userCard);
+            });
+        }
+
+        window.onload = displayUsers;
+    </script>
+
+</body>
+</html>
