@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .password-field {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .password-strength {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .weak {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .medium {
+            background-color: #ffcc00;
+            color: white;
+        }
+
+        .strong {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .strength-message {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Password Strength Checker</h2>
+        <input type="password" id="password" class="password-field" placeholder="Enter your password" oninput="checkPasswordStrength()">
+        <div id="password-strength" class="password-strength">Password Strength: <span id="strength-message">Enter a password</span></div>
+    </div>
+
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthMessage = document.getElementById('strength-message');
+            const strengthDiv = document.getElementById('password-strength');
+            const length = password.length;
+            const hasNumber = /\d/.test(password);
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+            // Determine password strength
+            if (length >= 10 && hasNumber && hasUpperCase && hasSpecialChar) {
+                strengthDiv.classList.remove('weak', 'medium');
+                strengthDiv.classList.add('strong');
+                strengthMessage.textContent = 'Strong';
+            } else if (length >= 8 && (hasNumber || hasUpperCase)) {
+                strengthDiv.classList.remove('weak', 'strong');
+                strengthDiv.classList.add('medium');
+                strengthMessage.textContent = 'Medium';
+            } else if (length >= 6) {
+                strengthDiv.classList.remove('medium', 'strong');
+                strengthDiv.classList.add('weak');
+                strengthMessage.textContent = 'Weak';
+            } else {
+                strengthDiv.classList.remove('weak', 'medium', 'strong');
+                strengthMessage.textContent = 'Enter a password';
+            }
+        }
+    </script>
+</body>
+</html>

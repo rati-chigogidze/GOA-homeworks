@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Card Layout</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+    }
+
+    /* Styles for Desktop */
+    .container {
+      justify-content: space-between;
+    }
+
+    .item {
+      border: 2px solid #66b2ff;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 20px;
+    }
+
+    /* Item Sizes for Desktop */
+    #A {
+      flex: 1 1 100%;
+    }
+
+    #B,
+    #E {
+      flex: 1 1 calc(50% - 10px);
+    }
+
+    #C,
+    #D {
+      flex: 1 1 calc(50% - 10px);
+    }
+
+    /* Responsive Design for Mobile */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .item {
+        flex: 1 1 100%;
+      }
+
+      #C,
+      #D {
+        display: flex;
+        flex: 1 1 calc(50% - 10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item" id="A">A</div>
+    <div class="item" id="B">B</div>
+    <div class="item" id="E">E</div>
+    <div class="item" id="C">C</div>
+    <div class="item" id="D">D</div>
+  </div>
+</body>
+</html>

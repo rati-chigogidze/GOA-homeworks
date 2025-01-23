@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>კარტების დიზაინი</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="filters">
+            <button id="filter-below-average">ფილტრი (საშუალოზე დაბლა)</button>
+        </div>
+
+        <div class="sorting">
+            <button onclick="sortCards('ascending')">რეიტინგის ზრდა</button>
+            <button onclick="sortCards('descending')">რეიტინგის შემცირება</button>
+            <button onclick="sortCards('random')">რენდომულად</button>
+        </div>
+
+        <div class="cards">
+            <div class="card" data-rating="4.5">
+                <img src="image1.jpg" alt="Card Image">
+                <h2>კარტი 1</h2>
+                <p>რიცხვი: 25</p>
+                <p>რეიტინგი: 4.5</p>
+            </div>
+            <div class="card" data-rating="3.2">
+                <img src="image2.jpg" alt="Card Image">
+                <h2>კარტი 2</h2>
+                <p>რიცხვი: 18</p>
+                <p>რეიტინგი: 3.2</p>
+            </div>
+            <!-- მეტი კარტი -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
