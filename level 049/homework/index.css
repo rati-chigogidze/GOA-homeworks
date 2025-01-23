@@ -1,0 +1,21 @@
+body {
+    font-family: Arial;   
+    background-color: #f4f4
+}
+.navbar {
+    background-color: #333;
+    
+}
+
+.navbar a:hover {
+    background-color: #5757
+    
+}
+.navbar a:active {
+    background-color: #555;
+   
+}
+.navbar a:visited {
+    color: lightgray;
+}
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID გენერატორი</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #message {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ID გენერატორი</h2>
+
+    <!-- ღილაკი ID-ს შესაქმნელად -->
+    <button id="generateBtn">გაუკეთე ახალი ID</button>
+
+    <!-- შეყვანის ველი ID-ს შესამოწმებლად -->
+    <br>
+    <input type="text" id="checkIdInput" placeholder="ჩაწერე ID">
+    <button id="checkIdBtn">დაათვალიერე ID</button>
+
+    <p id="message"></p>
+
+    <script>
+        // ID-ს გენერაციის ფუნქცია
+        let generatedId = '';
+
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            generatedId = 'key-' + Math.floor(Math.random() * 10000); // ID-ს გენერაცია
+            document.getElementById('message').innerText = 'ახალი ID: ' + generatedId;
+        });
+
+        // ID-ს მოძებნის ფუნქცია
+        document.getElementById('checkIdBtn').addEventListener('click', function() {
+            let inputId = document.getElementById('checkIdInput').value;
+            let message = '';
+            if (inputId === generatedId) {
+                message = 'ID არსებობს! ' + generatedId + ': ' + Math.floor(Math.random() * 100);
+            } else {
+                message = 'ID არ არსებობს!';
+            }
+            document.getElementById('message').innerText = message;
+        });
+    </script>
+
+</body>
+</html>

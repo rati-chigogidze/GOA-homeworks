@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<p id="myParagraph" style="color: blue; background-color: lightgray; font-weight: bold; font-size: 20px;">
+    
+</p>
+
+<script>
+    
+    const paragraph = document.getElementById("myParagraph");
+
+    const styleObject = {
+        color: paragraph.style.color,
+        bgColor: paragraph.style.backgroundColor,
+        fontWeight: paragraph.style.fontWeight,
+        fontSize: paragraph.style.fontSize
+    };
+
+    
+    console.log(styleObject);
+</script>
+
+</body>
+</html>

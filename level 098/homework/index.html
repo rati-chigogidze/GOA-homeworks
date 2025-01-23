@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:valid,
+        input[type="email"]:valid,
+        input[type="password"]:valid,
+        input[type="number"]:valid {
+            background-color: #d4edda;
+        }
+
+        input[type="text"]:invalid,
+        input[type="email"]:invalid,
+        input[type="password"]:invalid,
+        input[type="number"]:invalid {
+            background-color: #f8d7da;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 14px;
+            display: none;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #66afe9;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" onkeyup="validateFullName()">
+                <div id="fullNameError" class="error-message">Full Name should contain at least 3 letters and only letters.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" onkeyup="validateEmail()">
+                <div id="emailError" class="error-message">Please enter a valid email address (e.g. example@domain.com).</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" onkeyup="validatePassword()">
+                <div id="passwordError" class="error-message">Password must be at least 8 characters, contain one uppercase letter, one number, and one special character.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" onkeyup="validateConfirmPassword()">
+                <div id="confirmPasswordError" class="error-message">Passwords do not match.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="Enter your age" onkeyup="validateAge()">
+                <div id="ageError" class="error-message">You must be at least 18 years old.</div>
+            </div>
+
+            <button type="submit" class="submit-btn" disabled>Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateFullName() {
+            const fullName = document.getElementById('fullName');
+            const fullNameError = document.getElementById('fullNameError');
+            const submitBtn = document.querySelector('.submit-btn');
+            const fullNamePattern = /^[A-Za-z\s]+$/;
+
+            if (fullName.value.length >= 3 && fullNamePattern.test(fullName.value)) {
+                fullName.style.backgroundColor = "#d4edda"; // Green background
+                fullNameError.style.display = 'none';
+            } else {
+                fullName.style.backgroundColor = "#f8d7da"; // Red background
+                fullNameError.style.display = 'block';
+            }
+
+            validateForm();
+        }
+
+        function validateEmail() {
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (emailPattern.test(email.value)) {
+                email.style.backgroundColor = "#d4edda"; // Green background
+                emailError.style.display = 'none';
+            } else {
+                email.style.backgroundColor = "#f8d7da"; // Red background
+                emailError.style.display = 'block';
+            }
+
+            validateForm();
+        }
+
+        function validatePassword() {
+            const password = document.getElementById('password');
+            const passwordError = document.getElementById('passwordError');
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+            if (passwordPattern.test(password.value)) {
+                password.style.backgroundColor = "#d4edda"; // Green background
+                passwordError.style.display = 'none';
+            } else {
+                password.style.backgroundColor = "#f8d7da"; // Red background
+                passwordError.style.display = 'block';
+            }
+
+            validateForm();
+        }
+
+        function validateConfirmPassword() {
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+            if (confirmPassword.value === password.value && confirmPassword.value !== "") {
+                confirmPassword.style.backgroundColor = "#d4edda"; // Green background
+                confirmPasswordError.style.display = 'none';
+            } else {
+                confirmPassword.style.backgroundColor = "#f8d7da"; // Red background
+                confirmPasswordError.style.display = 'block';
+            }
+
+            validateForm();
+        }
+
+        function validateAge() {
+            const age = document.getElementById('age');
+            const ageError = document.getElementById('ageError');
+
+            if (age.value >= 18) {
+                age.style.backgroundColor = "#d4edda"; // Green background
+                ageError.style.display = 'none';
+            } else {
+                age.style.backgroundColor = "#f8d7da"; // Red background
+                ageError.style.display = 'block';
+            }
+
+            validateForm();
+        }
+
+        function validateForm() {
+            const fullNameValid = document.getElementById('fullName').style.backgroundColor === "rgb(212, 237, 218)";
+            const emailValid = document.getElementById('email').style.backgroundColor === "rgb(212, 237, 218)";
+            const passwordValid = document.getElementById('password').style.backgroundColor === "rgb(212, 237, 218)";
+            const confirmPasswordValid = document.getElementById('confirmPassword').style.backgroundColor === "rgb(212, 237, 218)";
+            const ageValid = document.getElementById('age').style.backgroundColor === "rgb(212, 237, 218)";
+
+            const submitBtn = document.querySelector('.submit-btn');
+            if (fullNameValid && emailValid && passwordValid && confirmPasswordValid && ageValid) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+    </script>
+
+</body>
+</html>

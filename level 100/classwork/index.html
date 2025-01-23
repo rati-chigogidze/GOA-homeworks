@@ -1,0 +1,50 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>document</title>
+</head>
+<body>
+    <div>
+        <div id="counter">0</div>
+
+        <div>
+            <button onclick="increment()" >მიმატება</button>
+            <button onclick="decrement()" style=>გამოკლება</button>
+            <button onclick="reset()" style=>დარესტარტება</button>
+        </div>
+    </div>
+
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document</title>
+  <link rel="stylesheet" href="index.css"> 
+</head>
+<body>
+
+<div class="container" id="counter-container">
+  <h2>Counter</h2>
+  <div class="counter" id="counter">0</div>
+  <button onclick="increment()">მიმატება</button>
+  <button onclick="decrement()">გამოკლება</button>
+  <br>
+  <button onclick="undo()" id="undo" disabled>Undo</button>
+  <button onclick="redo()" id="redo" disabled>Redo</button>
+  <div class="lock">
+    <input type="checkbox" id="lock-checkbox" onclick="toggleLock()"> 
+  </div>
+</div>
+
+<script src="script.js"></script> 
+</body>
+</html>

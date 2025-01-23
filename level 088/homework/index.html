@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        /* Fade In / Out */
+        .fade {
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .fade.show {
+            opacity: 1;
+        }
+
+        /* Slide In */
+        .slide {
+            transform: translateX(-100%);
+            transition: transform 2s;
+        }
+        .slide.show {
+            transform: translateX(0);
+        }
+
+        /* Moving Ball */
+        .ball {
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            transition: left 2s;
+        }
+
+        /* Text Size Animation */
+        .text {
+            font-size: 16px;
+            transition: font-size 2s;
+        }
+        .text.enlarge {
+            font-size: 32px;
+        }
+
+        /* Rotation */
+        .rotate {
+            transform: rotate(0deg);
+            transition: transform 2s;
+        }
+        .rotate.rotated {
+            transform: rotate(360deg);
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+        }
+    </style>
+    <title>All Animations</title>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Fade In/Out -->
+        <button onclick="toggleFade()">Toggle Fade</button>
+        <div id="fadeElement" class="fade">This is a fading element.</div>
+
+        <!-- Slide In -->
+        <button onclick="toggleSlide()">Slide In</button>
+        <div id="slideElement" class="slide">This element will slide in.</div>
+
+        <!-- Moving Ball -->
+        <button onclick="moveBall()">Move Ball</button>
+        <div id="ball" class="ball"></div>
+
+        <!-- Text Size Animation -->
+        <button onclick="toggleTextSize()">Toggle Text Size</button>
+        <p id="textElement" class="text">This text will change size.</p>
+
+        <!-- Rotation -->
+        <button onclick="rotateElement()">Rotate</button>
+        <div id="rotateElement" class="rotate">This element will rotate.</div>
+    </div>
+
+    <script>
+        // Fade In/Out
+        function toggleFade() {
+            const element = document.getElementById('fadeElement');
+            element.classList.toggle('show');
+        }
+
+        // Slide In
+        function toggleSlide() {
+            const element = document.getElementById('slideElement');
+            element.classList.toggle('show');
+        }
+
+        // Moving Ball
+        let isMoved = false;
+        function moveBall() {
+            const ball = document.getElementById('ball');
+            if (isMoved) {
+                ball.style.left = '0';
+            } else {
+                ball.style.left = '90%';
+            }
+            isMoved = !isMoved;
+        }
+
+        // Text Size Animation
+        function toggleTextSize() {
+            const element = document.getElementById('textElement');
+            element.classList.toggle('enlarge');
+        }
+
+        // Rotation
+        function rotateElement() {
+            const element = document.getElementById('rotateElement');
+            element.classList.toggle('rotated');
+        }
+    </script>
+
+</body>
+</html>

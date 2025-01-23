@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ვოიდი და Return ფუნქციები</title>
+    <style>
+        /* მთლიანი გვერდის სტილი */
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .code {
+            background-color: #282c34;
+            color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .example-button {
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .example-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>ვოიდი და Return ფუნქციები: განსხვავებები</h1>
+
+        <div class="section">
+            <h2>1. ვოიდი (Void) ფუნქცია</h2>
+            <p>
+                ვოიდი (Void) ფუნქცია არის ფუნქცია, რომელიც არ აბრუნებს რაიმე მნიშვნელობას. ის შეიძლება მხოლოდ რაღაც გააკეთოს, მაგრამ არ დააბრუნოს შედეგი.
+            </p>
+            <pre class="code">
+void printMessage() {
+    std::cout << "Hello, world!" << std::endl;
+}
+
+int main() {
+    printMessage();  // უბრალოდ გამოტანს ტექსტს
+    return 0;
+}
+            </pre>
+            <p>ეს ფუნქცია უბრალოდ გამოტანს ტექსტს, მაგრამ არ აბრუნებს რაიმე მნიშვნელობას.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Return ფუნქცია</h2>
+            <p>
+                Return ფუნქცია აბრუნებს რაიმე მნიშვნელობას, რომელიც შემდგომ შეიძლება გამოყენებულ იქნას სხვა კოდის ნაწილებში.
+            </p>
+            <pre class="code">
+int sum(int a, int b) {
+    return a + b;  // აბრუნებს მათემატიკურ ჯამს
+}
+
+int main() {
+    int result = sum(5, 10);  // sum ფუნქცია აბრუნებს 15-ს
+    std::cout << "Result: " << result << std::endl;
+    return 0;
+}
+            </pre>
+            <p>
+                ამ შემთხვევაში, `sum` ფუნქცია აბრუნებს მათემატიკური ოპერაციის შედეგს და გამოაქვს ის მთავარ პროგრამაში.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>3. Return-ის მნიშვნელობა</h2>
+            <p>
+                Return ფუნქციები ხშირად გამოიყენება, როცა საჭიროა ისეთი მონაცემების დაბრუნება, როგორიცაა რაოდენობა, მოცულობა, რეზულტატი და ა.შ. Return-ის საშუალებით, ფუნქცია გთავაზობთ შედეგს, რომელიც შეიძლება იქნეს გამოყენებული სხვა ნაწილებში.
+            </p>
+            <pre class="code">
+int multiply(int a, int b) {
+    return a * b;  // ბრუნდება მრავლობითი
+}
+
+int main() {
+    int result = multiply(3, 4);  // 3 * 4 = 12
+    std::cout << "Multiplication result: " << result << std::endl;
+    return 0;
+}
+            </pre>
+            <p>
+                ფუნქცია `multiply` იღებს ორი პარამეტრს და აბრუნებს მათ乘ბარ მნიშვნელობას. ეს მნიშვნელობა შემდეგ ხდება გამოყენებული.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>4. ძირითადი განსხვავებები</h2>
+            <p>
+                ქვემოთ არის სტარტეგიული განსხვავებები ვოიდი და Return ფუნქციების გამოყენებაში:
+            </p>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background-color: #f2f2f2;">
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">კრიტერიუმი</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">ვოიდი ფუნქცია</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Return ფუნქცია</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">გამოყენება</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">მხოლოდ მოქმედებები (მაგ. ტექსტის გამოტანა)</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">აბრუნებს კონკრეტულ მნიშვნელობას</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Return-ის გამოყენება</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">არ გამოიყენება</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">გამოიყენება მნიშვნელობის დაბრუნებისთვის</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">პროგრამაში გავლენა</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">სრულდება მხოლოდ მოქმედებები</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">მნიშვნელობის გადაცემას დაათავებს</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>5. როგორ გამოიყენოთ Return?</h2>
+            <p>
+                Return ფუნქციები ხშირად გამოიყენება როცა საჭიროა გამოთვლები, ოპერაციები და კონკრეტული შედეგის მიღება.
+            </p>
+            <button class="example-button" onclick="alert('Return ფუნქცია დადასტურებულია!')">დაკლიკე აქ</button>
+        </div>
+    </div>
+
+</body>
+</html>

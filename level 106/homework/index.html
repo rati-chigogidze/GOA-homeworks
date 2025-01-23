@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Functions Examples</title>
+</head>
+
+<body>
+    <h1>Arrow Functions Examples</h1>
+
+    <h2>1. მარტივი მისალმების ფუნქცია</h2>
+    <p id="greet"></p>
+
+    <h2>2. ორი რიცხვის ჯამი</h2>
+    <p id="sum"></p>
+
+    <h2>3. მაქსიმალური რიცხვი</h2>
+    <p id="max"></p>
+
+    <h2>4. სამი რიცხვის გამრავლება</h2>
+    <p id="multiply"></p>
+
+    <h2>5. ფარმაცევტული ფასის გამოთვლა</h2>
+    <p id="calculatePrice"></p>
+
+    <script>
+        // 1. მარტივი მისალმების ფუნქცია
+        const greet = (name = "მაყურებელი") => `გამარჯობა, ${name}!`;
+        document.getElementById("greet").textContent = greet("გიორგი") + " | " + greet();
+
+        // 2. ორი რიცხვის ჯამი
+        const sum = (a = 0, b = 5) => a + b;
+        document.getElementById("sum").textContent = sum(3, 7) + " | " + sum();
+
+        // 3. მაქსიმალური რიცხვის ფუნქცია
+        const max = (a = 10, b = 20) => (a > b ? a : b);
+        document.getElementById("max").textContent = max(15, 10) + " | " + max();
+
+        // 4. სამი რიცხვის გამრავლება
+        const multiply = (a = 1, b = 2, c = 3) => a * b * c;
+        document.getElementById("multiply").textContent = multiply(2, 3, 4) + " | " + multiply();
+
+        // 5. ფარმაცევტული ფასის გამოთვლა
+        const calculatePrice = (price, tax = 0.05) => price + (price * tax);
+        document.getElementById("calculatePrice").textContent = calculatePrice(100, 0.1) + " | " + calculatePrice(100);
+    </script>
+</body>
+
+</html>

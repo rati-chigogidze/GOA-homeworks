@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DOM Manipulation Examples</h1>
+
+    <div id="example1">
+        <h2>1. createElement</h2>
+        <button id="createElementBtn">შეიქმნა ახალი პუნქტი</button>
+        <ul id="list1"></ul>
+    </div>
+
+    <div id="example2">
+        <h2>2. appendChild</h2>
+        <button id="appendChildBtn">დაემატა პუნქტი</button>
+        <ul id="list2">
+            <li>პუნქტი 1</li>
+            <li>პუნქტი 2</li>
+        </ul>
+    </div>
+
+    <div id="example3">
+        <h2>3. insertBefore</h2>
+        <button id="insertBeforeBtn">ჩაისვა  პუნქტი</button>
+        <ul id="list3">
+            <li>პუნქტი A</li>
+            <li>პუნქტი B</li>
+        </ul>
+    </div>
+
+    <div id="example4">
+        <h2>4. removeChild</h2>
+        <button id="removeChildBtn">წაიშალა ბოლო პუნქტი</button>
+        <ul id="list4">
+            <li>პუნქტი X</li>
+            <li>პუნქტი Y</li>
+            <li>პუნქტი Z</li>
+        </ul>
+    </div>
+
+    <div id="example5">
+        <h2>5. parentNode</h2>
+        <button id="parentNodeBtn">მატერიალური ელემენტი</button>
+        <p id="childParagraph">პარაგრაფი</p>
+    </div>
+
+    <div id="example6">
+        <h2>6. replaceChild</h2>
+        <button id="replaceChildBtn">ჩანაცვლდა მეორე პუნქტი</button>
+        <ul id="list5">
+            <li>პუნქტი 1</li>
+            <li>პუნქტი 2</li>
+            <li>პუნქტი 3</li>
+        </ul>
+    </div>
+
+    <script>
+        // 1. createElement
+        document.getElementById('createElementBtn').addEventListener('click', () => {
+            // ახალი li ელემენტის შექმნა
+            const newItem = document.createElement('li');
+            newItem.textContent = "ახალი პუნქტი";
+            // ახალ ელემენტს დავამატებთ UL სიის ბოლოს
+            document.getElementById('list1').appendChild(newItem);
+        });
+
+        // 2. appendChild
+        document.getElementById('appendChildBtn').addEventListener('click', () => {
+            const newItem = document.createElement('li');
+            newItem.textContent = "ახალი პუნქტი (appendChild)";
+            // UL სიის ბოლოს ახალი ელემენტის დამატება
+            document.getElementById('list2').appendChild(newItem);
+        });
+
+        // 3. insertBefore
+        document.getElementById('insertBeforeBtn').addEventListener('click', () => {
+            const newItem = document.createElement('li');
+            newItem.textContent = "ახალი პუნქტი (insertBefore)";
+            const list = document.getElementById('list3');
+            // პირველი ელემენტის წინ ახალი ელემენტის დამატება
+            list.insertBefore(newItem, list.firstChild);
+        });
+
+        // 4. removeChild
+        document.getElementById('removeChildBtn').addEventListener('click', () => {
+            const list = document.getElementById('list4');
+            // ბოლო ელემენტის ამოღება
+            list.removeChild(list.lastChild);
+        });
+
+        // 5. parentNode
+        document.getElementById('parentNodeBtn').addEventListener('click', () => {
+            const child = document.getElementById('childParagraph');
+            // პარაგრაფის მშობელი ელემენტის მიცემა
+            const parent = child.parentNode;
+            console.log("მშობელი ელემენტი:", parent.tagName);
+        });
+
+        // 6. replaceChild
+        document.getElementById('replaceChildBtn').addEventListener('click', () => {
+            const newItem = document.createElement('li');
+            newItem.textContent = "ახალი პუნქტი (replaceChild)";
+            const list = document.getElementById('list5');
+            // მეორე ელემენტის შეცვლა ახალ ელემენტზე
+            list.replaceChild(newItem, list.children[1]);
+        });
+    </script>
+</body>
+</html>

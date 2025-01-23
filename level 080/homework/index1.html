@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ტაიმერი</title>
+</head>
+<body>
+    <h1 id="timer">0</h1>
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="reset">Reset</button>
+
+    <script>
+        let timer;
+        let count = 0;
+        let isRunning = false;
+
+        const timerDisplay = document.getElementById("timer");
+
+        document.getElementById("start").addEventListener("click", () => {
+            if (!isRunning) {
+                isRunning = true;
+                timer = setInterval(() => {
+                    count++;
+                    timerDisplay.textContent = count;
+                }, 1000);
+            }
+        });
+
+        document.getElementById("pause").addEventListener("click", () => {
+            clearInterval(timer);
+            isRunning = false;
+        });
+
+        document.getElementById("reset").addEventListener("click", () => {
+            clearInterval(timer);
+            isRunning = false;
+            count = 0;
+            timerDisplay.textContent = count;
+        });
+    </script>
+</body>
+</html>

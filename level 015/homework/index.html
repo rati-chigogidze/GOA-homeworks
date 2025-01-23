@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რიცხვის გამოცნობა</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #colorPicker {
+            margin-top: 20px;
+        }
+        #message {
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>მომხმარებლის გვერდი</h2>
+    
+    <!-- შესვლის ეკრანი (მომხმარებლის სახელი) -->
+    <div id="nameEntry" class="hidden">
+        <label for="userName">შეიყვანე შენი სახელი:</label>
+        <input type="text" id="userName" placeholder="სახელი" />
+        <button onclick="submitName()">შესვლა</button>
+    </div>
+    
+    <!-- მთავარი გვერდი -->
+    <div id="mainPage" class="hidden">
+        <h3>გამარჯობა, <span id="displayName"></span></h3>
+        <p>მომხმარებლის ქულა: <span id="score">0</span></p>
+
+        <!-- ქოლორ პიქერის ველი -->
+        <input type="color" id="colorPicker" onchange="changeBackgroundColor()" />
+        
+        <!-- რიცხვის გამოცნობის ნაწილი -->
+        <p>გამოიცანი რიცხვი: <span id="randomNumberDisplay"></span></p>
+        <input type="number" id="userGuess" placeholder="გამოიცანი რიცხვი" />
+        <button onclick="checkGuess()">შეამოწმე</button>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // მომხმარებლის სახელი და ქულა
+        let userName = localStorage.getItem('userName');
+        let score = parseInt(localStorage.getItem('score')) || 0;
+        let difficulty = parseInt(localStorage.getItem('difficulty')) || 1; // განსაზღვრავს სირთულეს
+        let randomNumber;
+
+        // პირველ შესვლაზე სახელი
+        if (!userName) {
+            document.getElementById('nameEntry').classList.remove('hidden');
+        } else {
+            document.getElementById('displayName').innerText = userName;
+            document.getElementById('mainPage').classList.remove('hidden');
+            startNewGame();
+        }
+
+        // სახელის ჩაწერა
+        function submitName() {
+            userName = document.getElementById('userName').value;
+            if (userName.trim() !== '') {
+                localStorage.setItem('userName', userName);
+                document.getElementById('displayName').innerText = userName;
+                document.getElementById('nameEntry').classList.add('hidden');
+                document.getElementById('mainPage').classList.remove('hidden');
+                startNewGame();
+            }
+        }
+
+        // ახალი თამაში
+        function startNewGame() {
+            randomNumber = generateRandomNumber(difficulty);
+            document.getElementById('randomNumberDisplay').innerText = randomNumber;
+            document.getElementById('score').innerText = score;
+        }
+
+        // რიცხვის გენერაცია
+        function generateRandomNumber(difficulty) {
+            return Math.floor(Math.random() * (Math.pow(10, difficulty)));
+        }
+
+        // რიცხვის გამოცნობა
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('userGuess').value);
+            if (userGuess === randomNumber) {
+                score++;
+                document.getElementById('score').innerText = score;
+                localStorage.setItem('score', score);
+
+                // სირთულის გაზრდა და ახალი რიცხვის გენერაცია
+                difficulty++;
+                localStorage.setItem('difficulty', difficulty);
+
+                // ახალი თამაში
+                randomNumber = generateRandomNumber(difficulty);
+                document.getElementById('randomNumberDisplay').innerText = randomNumber;
+
+                document.getElementById('message').innerText = 'წარმატებული პასუხი! ქულა გაიზარდა!';
+            } else {
+                document.getElementById('message').innerText = 'არასწორი პასუხი, სცადეთ კიდევ ერთხელ!';
+            }
+        }
+
+        // ფონდის ფერის ცვლილება
+        function changeBackgroundColor() {
+            document.body.style.backgroundColor = document.getElementById('colorPicker').value;
+        }
+    </script>
+
+</body>
+</html>

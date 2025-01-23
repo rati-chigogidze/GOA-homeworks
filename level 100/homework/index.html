@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .status {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .clicker {
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+
+        .gadgets {
+            margin-top: 30px;
+        }
+
+        .gadget {
+            margin: 15px 0;
+        }
+
+        .gadget p {
+            font-size: 16px;
+        }
+
+        .gadget button {
+            background-color: #2196F3;
+        }
+
+        .gadget button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Cookie Clicker Game</h1>
+
+        <div class="status">
+            <p>Cookies: <span id="cookies-count">0</span></p>
+            <p>Gold: <span id="gold-count">0</span></p>
+        </div>
+
+        <div class="clicker">
+            <button id="cookie-btn">Click Me!</button>
+        </div>
+
+        <div class="gadgets">
+            <h2>Buy Gadgets</h2>
+            <div id="gadgets-list">
+                <div class="gadget" id="cookie-multiplier">
+                    <p>Cookie Multiplier - Cost: 10 Gold (Effect: +1.2x)</p>
+                    <button onclick="buyGadget('cookie-multiplier')">Buy</button>
+                </div>
+                <div class="gadget" id="gold-generator">
+                    <p>Gold Generator - Cost: 50 Gold (Effect: +2x)</p>
+                    <button onclick="buyGadget('gold-generator')">Buy</button>
+                </div>
+                <div class="gadget" id="cookie-booster">
+                    <p>Cookie Booster - Cost: 200 Gold (Effect: +5x)</p>
+                    <button onclick="buyGadget('cookie-booster')">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game state variables
+        let cookies = 0;
+        let gold = 0;
+        let cookieMultiplier = 1;
+        let goldGenerator = 1;
+        let cookieBooster = 1;
+
+        // DOM Elements
+        const cookieBtn = document.getElementById('cookie-btn');
+        const cookiesCount = document.getElementById('cookies-count');
+        const goldCount = document.getElementById('gold-count');
+        const cookieMultiplierBtn = document.getElementById('cookie-multiplier').querySelector('button');
+        const goldGeneratorBtn = document.getElementById('gold-generator').querySelector('button');
+        const cookieBoosterBtn = document.getElementById('cookie-booster').querySelector('button');
+
+        // Cookie click handler
+        cookieBtn.addEventListener('click', () => {
+            cookies += cookieMultiplier;
+            gold += goldGenerator;
+            updateDisplay();
+        });
+
+        // Gadget purchase handler
+        function buyGadget(gadget) {
+            if (gadget === 'cookie-multiplier' && gold >= 10) {
+                cookieMultiplier *= 1.2;
+                gold -= 10;
+                updateDisplay();
+                cookieMultiplierBtn.disabled = true; // Disable purchase button after buying
+            } else if (gadget === 'gold-generator' && gold >= 50) {
+                goldGenerator *= 2;
+                gold -= 50;
+                updateDisplay();
+                goldGeneratorBtn.disabled = true; // Disable purchase button after buying
+            } else if (gadget === 'cookie-booster' && gold >= 200) {
+                cookieBooster *= 5;
+                gold -= 200;
+                updateDisplay();
+                cookieBoosterBtn.disabled = true; // Disable purchase button after buying
+            } else {
+                alert('Not enough gold or invalid selection!');
+            }
+        }
+
+        // Update the display of cookies and gold
+        function updateDisplay() {
+            cookiesCount.textContent = Math.floor(cookies);
+            goldCount.textContent = Math.floor(gold);
+        }
+    </script>
+</body>
+</html>
