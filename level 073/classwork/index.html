@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>პარაგრაფები და ფერი</title>
+</head>
+<body>
+
+    <!-- ორი პარაგრაფი -->
+    <p>ეს არის პირველი პარაგრაფი.</p>
+    <p>ეს არის მეორე პარაგრაფი.</p>
+
+    <script>
+        // JavaScript-ში პარაგრაფების არჩევა და ფერის მიცემა
+        // ვირჩევთ ყველა პარაგრაფს, რომლებიც ტეგით <p> არის
+        const paragraphs = document.querySelectorAll("p");
+
+        // ავირჩიეთ ყველა პარაგრაფი და მივცეთ ფერი
+        paragraphs.forEach(paragraph => {
+            paragraph.style.color = "blue"; // ნებისმიერი ფერი
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ობიექტი - პერსონაჟი</title>
+</head>
+<body>
+    <script>
+        // ობიექტის შექმნა
+        let spiderman = {
+            name: "Spider-Man",    // პერსონაჟის სახელი
+            alias: "Peter Parker", // ალია (ნამდვილი სახელი)
+            superPower: "Wall-crawling",  // სუპერძალა
+            age: 25,               // ასაკი
+            city: "New York"       // ქალაქი
+        };
+
+        // დაბეჭდვა - ობიექტის კუთვნილებები ცალ-ცალკე
+        console.log(spiderman.name);       // "Spider-Man"
+        console.log(spiderman.alias);      // "Peter Parker"
+        console.log(spiderman.superPower); // "Wall-crawling"
+        console.log(spiderman.age);        // 25
+        console.log(spiderman.city);       // "New York"
+
+        // შეცვლა - ორი კუთვნილების განახლება
+        spiderman.age = 30;               // ასაკი განახლდა
+        spiderman.city = "Queens";        // ქალაქი განახლდა
+
+        // დაბეჭდვა - განახლებული ობიექტი
+        console.log("შემდეგი მონაცემები განახლებული ობიექტისთვის:");
+        console.log(spiderman.name);       // "Spider-Man"
+        console.log(spiderman.alias);      // "Peter Parker"
+        console.log(spiderman.superPower); // "Wall-crawling"
+        console.log(spiderman.age);        // 30
+        console.log(spiderman.city);       // "Queens"
+
+        // ახალი კუთვნილების დამატება და ძველი კუთვნილების წაშლა
+        spiderman.sidekick = "Miles Morales";  // ახალი კუთვნილება - თანატოლი
+        delete spiderman.superPower;         // ძველი კუთვნილების წაშლა
+
+        // დაბეჭდვა - საბოლოო შედეგი
+        console.log("საბოლოო ობიექტი:");
+        console.log(spiderman); // ცალი-ცალკე ყველა კუთვნილება იქნება დაბეჭდილი
+    </script>
+</body>
+</html>

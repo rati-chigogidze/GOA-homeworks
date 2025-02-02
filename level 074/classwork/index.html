@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML გამოყენება</title>
+    <style>
+        .container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content" class="container">
+        <!-- აქ გამოვიყენებთ innerHTML JavaScript-ისთვის -->
+    </div>
+
+    <script>
+        // ვპოულობთ div ელემენტს, რომელშიც გვინდა რომ შევიტანოთ კონტენტი
+        const contentDiv = document.getElementById("content");
+
+        // ვქმნით HTML სტრიქონს, რომელიც შეიცავს პარაგრაფებს, ღილაკებს და სხვა ელემენტებს
+        contentDiv.innerHTML = `
+            <h2>მშვენიერი დინამიური კონტენტი!</h2>
+            <p>ეს არის პირველი პარაგრაფი.</p>
+            <p>ეს არის მეორე პარაგრაფი.</p>
+            <p>ეს არის მესამე პარაგრაფი, სადაც შეგიძლიათ დაამატოთ რაც გსურთ.</p>
+            <button onclick="alert('თქვენ დააჭირეთ პირველ ღილაკს!')">პირველი ღილაკი</button>
+            <button onclick="alert('თქვენ დააჭირეთ მეორეს!')">მეორე ღილაკი</button>
+            <p>თქვენი არჩევანი აღიარებულია!</p>
+        `;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ასოციაციური მასივი და მეთოდები</title>
+</head>
+<body>
+    <script>
+        // ასოციაციური მასივი (Object)
+        const person = {
+            name: "გიორგი",
+            age: 30,
+            city: "თბილისი",
+            profession: "დეველოპერი"
+        };
+
+        // 1. for...in ციკლი - ობიექტის ყველა კუთვნილების გასავლელად
+        console.log("for...in ციკლი:");
+        for (let key in person) {
+            console.log(key + ": " + person[key]);
+        }
+
+        // 2. Object.keys() - ობიექტის ყველა კუთვნილების სახელების (keys) მიღება
+        const keys = Object.keys(person);
+        console.log("\nObject.keys() - კუთვნილებების სახელები:");
+        console.log(keys); // ["name", "age", "city", "profession"]
+
+        // 3. Object.values() - ობიექტის ყველა მნიშვნელობის (values) მიღება
+        const values = Object.values(person);
+        console.log("\nObject.values() - კუთვნილებების მნიშვნელობები:");
+        console.log(values); // ["გიორგი", 30, "თბილისი", "დეველოპერი"]
+
+    </script>
+</body>
+</html>

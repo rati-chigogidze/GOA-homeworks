@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ტრანსფორმაციის ანიმაცია</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="animated-box"></div>
+
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.animated-box {
+    width: 150px;
+    height: 150px;
+    background-color: #3498db;
+    transition: transform 2s ease-in-out;
+}
+
+/* An animation using rotate, scale, skew */
+.animated-box:hover {
+    transform: rotate(45deg) scale(1.5) skew(20deg, 10deg);
+}
+
+    </style>
+</body>
+</html>

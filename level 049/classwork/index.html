@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar and Sticky Banner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-logo">MyShop</div>
+    <ul class="navbar-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sticky Banner (Advertisement) -->
+  <div class="sticky-banner" id="stickyBanner">
+    <div class="banner-content">
+      <h2>Big Sale! Get 50% off on all products!</h2>
+      <button onclick="window.location.href='#products'">Shop Now</button>
+    </div>
+  </div>
+
+  <!-- Main Content (Sample) -->
+  <section id="home" class="content-section">
+    <h1>Welcome to MyShop</h1>
+    <p>Scroll down to see the advertisement!</p>
+  </section>
+
+  <section id="products" class="content-section">
+    <h2>Our Products</h2>
+    <p>Browse through our amazing products!</p>
+  </section>
+
+  <section id="contact" class="content-section">
+    <h2>Contact Us</h2>
+    <p>Get in touch for more information.</p>
+  </section>
+
+  <section id="about" class="content-section">
+    <h2>About Us</h2>
+    <p>Learn more about our story and values.</p>
+  </section>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

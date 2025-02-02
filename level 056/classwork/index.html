@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ღილაკი მესიჯით</title>
+    <style>
+        /* ძირითადი სტილები */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* ღილაკის სტილები */
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ღილაკი -->
+    <button onclick="showMessage()">დაჭირე მე</button>
+
+    <script>
+        // JavaScript ფუნქცია, რომელიც გამოუშვებს მესიჯს
+        function showMessage() {
+            alert("თქვენ დააჭირეთ ღილაკს!");
+        }
+    </script>
+
+</body>
+</html>

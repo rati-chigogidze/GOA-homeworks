@@ -1,0 +1,1 @@
+// https://www.codewars.com/packs/assets/og-image.7f5134fb.pnghttps://cssbattle.dev/api/socialImage/target?id=T2KQerrE4TWYy3XN24xH

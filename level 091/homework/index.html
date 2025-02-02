@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ფორმა ვალიდაციით</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .success {
+            background-color: #c8e6c9; /* მწვანე ფერი */
+        }
+
+        .error-input {
+            background-color: #ffcccb; /* წითელი ფერი */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>რეგისტრაცია</h2>
+        <form id="registrationForm">
+            <div class="input-container">
+                <label for="fullName">სრული სახელი</label>
+                <input type="text" id="fullName" name="fullName" onkeyup="validateFullName()" placeholder="შეიყვანეთ თქვენი სრული სახელი" required>
+                <div id="fullNameError" class="error"></div>
+            </div>
+
+            <div class="input-container">
+                <label for="email">ელ. ფოსტა</label>
+                <input type="email" id="email" name="email" onkeyup="validateEmail()" placeholder="example@domain.com" required>
+                <div id="emailError" class="error"></div>
+            </div>
+
+            <div class="input-container">
+                <label for="password">პაროლი</label>
+                <input type="password" id="password" name="password" onkeyup="validatePassword()" placeholder="შეიყვანეთ პაროლი" required>
+                <div id="passwordError" class="error"></div>
+            </div>
+
+            <div class="input-container">
+                <label for="confirmPassword">პაროლის დადასტურება</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" onkeyup="validateConfirmPassword()" placeholder="დადასტურება პაროლი" required>
+                <div id="confirmPasswordError" class="error"></div>
+            </div>
+
+            <div class="input-container">
+                <label for="age">ასაკი</label>
+                <input type="number" id="age" name="age" onblur="validateAge()" placeholder="შეიყვანეთ თქვენი ასაკი" required>
+                <div id="ageError" class="error"></div>
+            </div>
+
+            <button type="submit" id="submitButton" disabled>რეგისტრაცია</button>
+        </form>
+    </div>
+
+    <script>
+        // Full Name Validation
+        function validateFullName() {
+            const fullName = document.getElementById('fullName').value;
+            const fullNameError = document.getElementById('fullNameError');
+            const regex = /^[a-zA-Z\s]+$/;
+
+            if (fullName.length >= 3 && regex.test(fullName)) {
+                document.getElementById('fullName').classList.add('success');
+                document.getElementById('fullName').classList.remove('error-input');
+                fullNameError.textContent = '';
+            } else {
+                document.getElementById('fullName').classList.add('error-input');
+                document.getElementById('fullName').classList.remove('success');
+                fullNameError.textContent = 'მხოლოდ ასოები, მინიმუმ 3 სიმბოლო';
+            }
+            toggleSubmitButton();
+        }
+
+        // Email Validation
+        function validateEmail() {
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (regex.test(email)) {
+                document.getElementById('email').classList.add('success');
+                document.getElementById('email').classList.remove('error-input');
+                emailError.textContent = '';
+            } else {
+                document.getElementById('email').classList.add('error-input');
+                document.getElementById('email').classList.remove('success');
+                emailError.textContent = 'არასწორი ელ. ფოსტის ფორმატი';
+            }
+            toggleSubmitButton();
+        }
+
+        // Password Validation
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const passwordError = document.getElementById('passwordError');
+            const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+            if (regex.test(password)) {
+                document.getElementById('password').classList.add('success');
+                document.getElementById('password').classList.remove('error-input');
+                passwordError.textContent = '';
+            } else {
+                document.getElementById('password').classList.add('error-input');
+                document.getElementById('password').classList.remove('success');
+                passwordError.textContent = 'პაროლი უნდა შეიცავდეს მინიმუმ 8 სიმბოლოს, ერთი დიდი ასო, ერთი რიცხვი და ერთი სპეციალური სიმბოლო';
+            }
+            toggleSubmitButton();
+        }
+
+        // Confirm Password Validation
+        function validateConfirmPassword() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+            if (confirmPassword === password) {
+                document.getElementById('confirmPassword').classList.add('success');
+                document.getElementById('confirmPassword').classList.remove('error-input');
+                confirmPasswordError.textContent = '';
+            } else {
+                document.getElementById('confirmPassword').classList.add('error-input');
+                document.getElementById('confirmPassword').classList.remove('success');
+                confirmPasswordError.textContent = 'პაროლები არ ემთხვევა';
+            }
+            toggleSubmitButton();
+        }
+
+        // Age Validation
+        function validateAge() {
+            const age = document.getElementById('age').value;
+            const ageError = document.getElementById('ageError');
+
+            if (age >= 18) {
+                document.getElementById('age').classList.add('success');
+                document.getElementById('age').classList.remove('error-input');
+                ageError.textContent = '';
+            } else {
+                document.getElementById('age').classList.add('error-input');
+                document.getElementById('age').classList.remove('success');
+                ageError.textContent = 'უნდა იყოს მინიმუმ 18 წელი';
+            }
+            toggleSubmitButton();
+        }
+
+        // Enable/Disable Submit Button based on Validations
+        function toggleSubmitButton() {
+            const formValid = document.getElementById('fullName').classList.contains('success') &&
+                document.getElementById('email').classList.contains('success') &&
+                document.getElementById('password').classList.contains('success') &&
+                document.getElementById('confirmPassword').classList.contains('success') &&
+                document.getElementById('age').classList.contains('success');
+
+            document.getElementById('submitButton').disabled = !formValid;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Program</title>
+    <style>
+        /* CSS */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .counter-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 250px;
+        }
+
+        .counter {
+            font-size: 2em;
+            margin: 20px 0;
+            padding: 10px;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .counter.red {
+            color: white;
+            background-color: red;
+        }
+
+        .counter.green {
+            color: white;
+            background-color: green;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="counter-container">
+        <div class="counter" id="counterValue">0</div>
+        <div class="button-container">
+            <button id="addButton">Add</button>
+            <button id="subtractButton">Subtract</button>
+            <button id="resetButton">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript
+        let counter = 0;
+
+        const counterValue = document.getElementById('counterValue');
+        const addButton = document.getElementById('addButton');
+        const subtractButton = document.getElementById('subtractButton');
+        const resetButton = document.getElementById('resetButton');
+
+        function updateCounterDisplay() {
+            counterValue.textContent = counter;
+            
+            if (counter === 0) {
+                counterValue.classList.remove('green');
+                counterValue.classList.add('red');
+            } else if (counter > 0) {
+                counterValue.classList.remove('red');
+                counterValue.classList.add('green');
+            }
+        }
+
+        addButton.addEventListener('click', () => {
+            counter++;
+            updateCounterDisplay();
+        });
+
+        subtractButton.addEventListener('click', () => {
+            counter--;
+            updateCounterDisplay();
+        });
+
+        resetButton.addEventListener('click', () => {
+            counter = 0;
+            updateCounterDisplay();
+        });
+
+        // Initialize the display
+        updateCounterDisplay();
+    </script>
+
+</body>
+</html>

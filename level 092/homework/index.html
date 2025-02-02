@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>პაროლის სიძლიერე</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .strength {
+            margin-top: 10px;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .weak {
+            background-color: red;
+            color: white;
+        }
+
+        .medium {
+            background-color: yellow;
+            color: black;
+        }
+
+        .strong {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>პაროლის შექმნა</h2>
+        <div class="input-container">
+            <label for="password">პაროლი</label>
+            <input type="password" id="password" oninput="checkPasswordStrength()" placeholder="შეიყვანეთ პაროლი">
+        </div>
+        <div id="strength" class="strength"></div>
+    </div>
+
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById("password").value;
+            const strengthText = document.getElementById("strength");
+
+            const lengthCriteria = password.length >= 6;
+            const mediumCriteria = password.length >= 8 && /[A-Z]/.test(password) || /\d/.test(password);
+            const strongCriteria = password.length >= 10 && /[A-Z]/.test(password) && /\d/.test(password) && /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+            if (strongCriteria) {
+                strengthText.textContent = "ძალიან ძლიერი";
+                strengthText.className = "strength strong";
+            } else if (mediumCriteria) {
+                strengthText.textContent = "საშუალო სიძლიერე";
+                strengthText.className = "strength medium";
+            } else if (lengthCriteria) {
+                strengthText.textContent = "მდაბალი სიძლიერე";
+                strengthText.className = "strength weak";
+            } else {
+                strengthText.textContent = "";
+                strengthText.className = "strength";
+            }
+        }
+    </script>
+
+</body>
+</html>

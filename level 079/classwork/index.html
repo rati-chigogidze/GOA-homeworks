@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ღილაკის ანიმაცია</title>
+    <style>
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #4CAF50; /* ფერის დასაწყისი */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* გადასვლა */
+        }
+
+        button:active {
+            transform: translateY(-5px); /* ზემოთ აიწიოს */
+            background-color: #45a049; /* ფერის ცვლილება */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="animatedButton">დაჭირე me!</button>
+
+    <script>
+        const button = document.getElementById("animatedButton");
+
+        // ვსარგებლობთ onclick მოვლენის გამოყენებით
+        button.addEventListener("click", function() {
+            button.style.backgroundColor = "#f44336"; // გადადებითი ფერი
+        });
+    </script>
+
+</body>
+</html>

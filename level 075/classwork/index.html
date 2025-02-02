@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ფორმა და ცხრილი</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ფორმა</h2>
+    <form id="userForm">
+        <label for="name">სახელი:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">იმეილი:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">პაროლი:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="fbLink">Facebook ლინკი:</label>
+        <input type="url" id="fbLink" name="fbLink" required><br><br>
+
+        <button type="submit">დადასტურება</button>
+    </form>
+
+    <h2>ცხრილი</h2>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>სახელი</th>
+                <th>იმეილი</th>
+                <th>პაროლი</th>
+                <th>Facebook ლინკი</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- აქ დაემატება ახალი მონაცემები -->
+        </tbody>
+    </table>
+
+    <script>
+        // ვიპოვოთ ფორმა და ცხრილის tbody
+        const form = document.getElementById("userForm");
+        const tableBody = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
+
+        // ფორმის სუბმისის დროს
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // თავიდან ავიცილოთ გვერდის დარეფრეში
+
+            // აიღეთ ფორმის მნიშვნელობები
+            const name = form.elements["name"].value;
+            const email = form.elements["email"].value;
+            const password = form.elements["password"].value;
+            const fbLink = form.elements["fbLink"].value;
+
+            // შექმენით ახალი რიგი ცხრილში
+            const newRow = tableBody.insertRow();
+
+            // თითოეული სვეტის დამატება ახალ რიგში
+            newRow.insertCell(0).textContent = name;
+            newRow.insertCell(1).textContent = email;
+            newRow.insertCell(2).textContent = password;
+            newRow.insertCell(3).textContent = fbLink;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyframes ანიმაცია</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="animated-box"></div>
+
+    <style>body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f5f5f5;
+    }
+    
+    .animated-box {
+        width: 150px;
+        height: 150px;
+        background-color: #3498db;
+        border-radius: 20px; /* ელემენტს დავაპრიალებთ კუთხეებს */
+        animation-name: boxAnimation; /* ანიმაციის სახელი */
+        animation-duration: 5s; /* ანიმაცია 5 წამი გაგრძელდება */
+        animation-iteration-count: infinite; /* ანიმაცია უსასრულოდ გაიმეორება */
+    }
+    
+    /* Keyframes - ანიმაციის ნუსხა */
+    @keyframes boxAnimation {
+        0% {
+            transform: rotate(0deg) scale(1); /* პირველი ნაბიჯი: ელემენტი ნულის გრადუსით და ჩვეულებრივი ზომით */
+            background-color: #3498db; /* მრუდის ფერი */
+        }
+        25% {
+            transform: rotate(90deg) scale(1.2); /* მეოთხედი დროის შემდეგ: ელემენტი 90 გრადუსით იბრუნება და იზრდება */
+            background-color: #e74c3c; /* ფერი იცვლება წითელზე */
+        }
+        50% {
+            transform: rotate(180deg) scale(1); /* ნახევარი დროის შემდეგ: ელემენტი კვლავ ბრუნდება და ჩვეულებრივ ზომაში რჩება */
+            background-color: #f39c12; /* ფერი შეიცვალა ყვითელზე */
+        }
+        75% {
+            transform: rotate(270deg) scale(0.8); /* სამი მეოთხედი: ელემენტი 270 გრადუსით ბრუნავს და მცირდება */
+            background-color: #2ecc71; /* ფერი მწვანეა */
+        }
+        100% {
+            transform: rotate(360deg) scale(1); /* ბოლო ეტაპზე: ელემენტი სრულად იბრუნება და ჩვეულებრივ ზომაზე ბრუნდება */
+            background-color: #3498db; /* დასასრულს ისევ საბაზო ფერი */
+        }
+    }
+    </style>
+    
+</body>
+</html>

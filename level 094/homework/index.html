@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design Example</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .card h2 {
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                font-size: 18px;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+
+            .card {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Responsive Web Design Example</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <div class="card">
+                <h2>Card 1</h2>
+                <p>This is an example of a responsive card. It will adjust based on the screen size.</p>
+            </div>
+            <div class="card">
+                <h2>Card 2</h2>
+                <p>This is another responsive card. Notice how the layout changes when the screen size is reduced.</p>
+            </div>
+            <div class="card">
+                <h2>Card 3</h2>
+                <p>Responsive design makes websites work on mobile, tablet, and desktop screens.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

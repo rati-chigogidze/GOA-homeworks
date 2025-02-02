@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ონლაინ მაღაზია</title>
+    <style>
+        /* CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        .cards-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .card {
+            width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .card-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #e91e63;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cards-container" id="cardsContainer"></div>
+
+    <script>
+        // JavaScript
+        const products = [
+            {
+                name: "ლეპტოპი",
+                description: "კარგი ხარისხის ლეპტოპი, იდეალურ მდგომარეობაში.",
+                price: "2000₾",
+                image: "https://via.placeholder.com/300x200?text=ლეპტოპი"
+            },
+            {
+                name: "სმარტფონი",
+                description: "მსოფლიოში საუკეთესო სმარტფონი.",
+                price: "1500₾",
+                image: "https://via.placeholder.com/300x200?text=სმარტფონი"
+            },
+            {
+                name: "მარტივი ტელევიზორი",
+                description: "მარტივი, მაგრამ ძლიერი ტელევიზორი.",
+                price: "1000₾",
+                image: "https://via.placeholder.com/300x200?text=ტელევიზორი"
+            }
+        ];
+
+        const cardsContainer = document.getElementById('cardsContainer');
+
+        // ეს ფუნქცია შექმნის კარტებს
+        function createCards(products) {
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="card-content">
+                        <h2 class="card-title">${product.name}</h2>
+                        <p class="card-description">${product.description}</p>
+                        <p class="card-price">${product.price}</p>
+                    </div>
+                `;
+
+                cardsContainer.appendChild(card);
+            });
+        }
+
+        // გამოძახება ფუნქციისთვის
+        createCards(products);
+    </script>
+</body>
+</html>
